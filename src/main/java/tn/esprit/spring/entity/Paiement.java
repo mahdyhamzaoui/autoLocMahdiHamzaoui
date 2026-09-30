@@ -2,9 +2,7 @@ package tn.esprit.spring.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.experimental.FieldDefaults;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
@@ -13,23 +11,14 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@FieldDefaults(level = AccessLevel.PRIVATE)
-public class Paiement implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class Paiement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idPaiement;
-
-    BigDecimal montant;
-    LocalDate datePaiement;
+    private Long idPaiement;
+    private BigDecimal montant;
+    private LocalDate datePaiement;
 
     @Enumerated(EnumType.STRING)
-    ModePaiement modePaiement;
-
-    @ToString.Exclude
-    @ManyToOne
-    Contrat contrat;
+    private ModePaiement modePaiement;
 }

@@ -2,52 +2,27 @@ package tn.esprit.spring.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.experimental.FieldDefaults;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@FieldDefaults(level = AccessLevel.PRIVATE)
-public class Vehicule implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class Vehicule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idVehicule;
-
-    String immatriculation;
-    String marque;
-    String modele;
-
-    @Enumerated(EnumType.STRING)
-    CategorieVehicule categorie;
-
-    BigDecimal tarifJournalier;
+    private Long idVehicule;
+    private String immatriculation;
+    private String marque;
+    private String modele;
 
     @Enumerated(EnumType.STRING)
-    StatutVehicule statut;
+    private CategorieVehicule categorie;
+    private BigDecimal tarifJournalier;
 
-    @ToString.Exclude
-    @ManyToOne
-    Agence agence;
-
-    @ToString.Exclude
-    @OneToMany(mappedBy = "vehicule", cascade = CascadeType.ALL)
-    List<Maintenance> maintenances;
-
-    @ToString.Exclude
-    @ManyToMany
-    List<Equipement> equipements;
-
-    @ToString.Exclude
-    @OneToMany(mappedBy = "vehicule", cascade = CascadeType.ALL)
-    List<Reservation> reservations;
+    @Enumerated(EnumType.STRING)
+    private StatutVehicule statut;
 }

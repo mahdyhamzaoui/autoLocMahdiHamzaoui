@@ -2,29 +2,16 @@ package tn.esprit.spring.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.experimental.FieldDefaults;
-
-import java.io.Serializable;
-import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@FieldDefaults(level = AccessLevel.PRIVATE)
-public class Equipement implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class Equipement {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idEquipement;
-
-    String libelle;
-
-    @ToString.Exclude
-    @ManyToMany(mappedBy = "equipements")
-    List<Vehicule> vehicules;
+    private Long idEquipement;
+    private String libelle;
 }

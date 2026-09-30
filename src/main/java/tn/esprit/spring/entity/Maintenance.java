@@ -2,9 +2,7 @@ package tn.esprit.spring.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-import lombok.experimental.FieldDefaults;
 
-import java.io.Serializable;
 import java.time.LocalDate;
 
 @Entity
@@ -12,21 +10,12 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@FieldDefaults(level = AccessLevel.PRIVATE)
-public class Maintenance implements Serializable {
-
-    private static final long serialVersionUID = 1L;
+public class Maintenance {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long idMaintenance;
-
-    LocalDate dateDebut;
-    LocalDate dateFin;
-    String description;
-
-    @ToString.Exclude
-    @ManyToOne
-    Vehicule vehicule;
+    private Long idMaintenance;
+    private LocalDate dateDebut;
+    private LocalDate dateFin;
+    private String description;
 }
