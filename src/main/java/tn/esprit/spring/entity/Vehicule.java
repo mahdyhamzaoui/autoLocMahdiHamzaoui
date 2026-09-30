@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Getter
@@ -25,4 +26,16 @@ public class Vehicule {
 
     @Enumerated(EnumType.STRING)
     private StatutVehicule statut;
+
+    @ManyToOne
+    Agence agence;
+
+    @OneToMany(mappedBy = "vehicule")
+    List<Maintenance> maintenances;
+
+    @ManyToMany
+    List<Equipement> equipements;
+
+    @OneToMany(mappedBy = "vehicule")
+    List<Reservation> reservations;
 }
