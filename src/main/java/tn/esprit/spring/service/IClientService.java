@@ -5,13 +5,13 @@ import tn.esprit.spring.entity.Client;
 import java.util.List;
 
 public interface IClientService {
-    Client creer(Client client);
+    Client create(Client client);
 
-    Client obtenirParId(Long id);
+    Client getById(Long id);
 
-    List<Client> listerTous();
+    List<Client> getAll();
 
-    Client mettreAJour(Client client);
+    Client update(Client client);
 
-    void supprimer(Long id);
+    void delete(Long id);
 }

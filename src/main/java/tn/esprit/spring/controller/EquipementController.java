@@ -1,5 +1,7 @@
 package tn.esprit.spring.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.spring.entity.Equipement;
@@ -7,6 +9,7 @@ import tn.esprit.spring.service.IEquipementService;
 
 import java.util.List;
 
+@Tag(name = "Gestion des équipements")
 @RestController
 @AllArgsConstructor
 @RequestMapping("/equipement")
@@ -14,28 +17,33 @@ public class EquipementController {
 
     IEquipementService service;
 
-    @PostMapping("/creer")
-    public Equipement creer(@RequestBody Equipement equipement) {
-        return service.creer(equipement);
+    @Operation(description = "Cette méthode permet d'ajouter un équipement")
+    @PostMapping("/create")
+    public Equipement create(@RequestBody Equipement equipement) {
+        return service.create(equipement);
     }
 
-    @GetMapping("/obtenir/{id}")
-    public Equipement obtenirParId(@PathVariable Long id) {
-        return service.obtenirParId(id);
+    @Operation(description = "Cette méthode permet d'obtenir un équipement par son identifiant")
+    @GetMapping("/get/{id}")
+    public Equipement getById(@PathVariable Long id) {
+        return service.getById(id);
     }
 
-    @GetMapping("/lister")
-    public List<Equipement> listerTous() {
-        return service.listerTous();
+    @Operation(description = "Cette méthode permet de lister tous les équipements")
+    @GetMapping("/getAll")
+    public List<Equipement> getAll() {
+        return service.getAll();
     }
 
-    @PutMapping("/mettreAJour")
-    public Equipement mettreAJour(@RequestBody Equipement equipement) {
-        return service.mettreAJour(equipement);
+    @Operation(description = "Cette méthode permet de mettre à jour un équipement")
+    @PutMapping("/update")
+    public Equipement update(@RequestBody Equipement equipement) {
+        return service.update(equipement);
     }
 
-    @DeleteMapping("/supprimer/{id}")
-    public void supprimer(@PathVariable Long id) {
-        service.supprimer(id);
+    @Operation(description = "Cette méthode permet de supprimer un équipement par son identifiant")
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable Long id) {
+        service.delete(id);
     }
 }

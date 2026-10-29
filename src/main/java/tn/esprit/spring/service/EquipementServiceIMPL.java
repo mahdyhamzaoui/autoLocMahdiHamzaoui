@@ -13,27 +13,27 @@ public class EquipementServiceIMPL implements IEquipementService {
     EquipementRepository repository;
 
     @Override
-    public Equipement creer(Equipement equipement) {
+    public Equipement create(Equipement equipement) {
         return repository.save(equipement);
     }
 
     @Override
-    public Equipement obtenirParId(Long id) {
+    public Equipement getById(Long id) {
         return repository.findById(id).orElse(null);
     }
 
     @Override
-    public List<Equipement> listerTous() {
+    public List<Equipement> getAll() {
         return repository.findAll();
     }
 
     @Override
-    public Equipement mettreAJour(Equipement equipement) {
+    public Equipement update(Equipement equipement) {
         return repository.save(equipement);
     }
 
     @Override
-    public void supprimer(Long id) {
+    public void delete(Long id) {
         repository.deleteById(id);
     }
 }

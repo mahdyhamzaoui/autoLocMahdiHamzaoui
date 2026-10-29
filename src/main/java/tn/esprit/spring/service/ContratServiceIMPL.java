@@ -13,27 +13,27 @@ public class ContratServiceIMPL implements IContratService {
     ContratRepository repository;
 
     @Override
-    public Contrat creer(Contrat contrat) {
+    public Contrat create(Contrat contrat) {
         return repository.save(contrat);
     }
 
     @Override
-    public Contrat obtenirParId(Long id) {
+    public Contrat getById(Long id) {
         return repository.findById(id).orElse(null);
     }
 
     @Override
-    public List<Contrat> listerTous() {
+    public List<Contrat> getAll() {
         return repository.findAll();
     }
 
     @Override
-    public Contrat mettreAJour(Contrat contrat) {
+    public Contrat update(Contrat contrat) {
         return repository.save(contrat);
     }
 
     @Override
-    public void supprimer(Long id) {
+    public void delete(Long id) {
         repository.deleteById(id);
     }
 }

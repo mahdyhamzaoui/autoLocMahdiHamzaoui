@@ -1,5 +1,7 @@
 package tn.esprit.spring.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.spring.entity.Paiement;
@@ -7,6 +9,7 @@ import tn.esprit.spring.service.IPaiementService;
 
 import java.util.List;
 
+@Tag(name = "Gestion des paiements")
 @RestController
 @AllArgsConstructor
 @RequestMapping("/paiement")
@@ -14,28 +17,33 @@ public class PaiementController {
 
     IPaiementService service;
 
-    @PostMapping("/creer")
-    public Paiement creer(@RequestBody Paiement payment) {
-        return service.creer(payment);
+    @Operation(description = "Cette méthode permet d'ajouter un paiement")
+    @PostMapping("/create")
+    public Paiement create(@RequestBody Paiement paiement) {
+        return service.create(paiement);
     }
 
-    @GetMapping("/obtenir/{id}")
-    public Paiement obtenirParId(@PathVariable Long id) {
-        return service.obtenirParId(id);
+    @Operation(description = "Cette méthode permet d'obtenir un paiement par son identifiant")
+    @GetMapping("/get/{id}")
+    public Paiement getById(@PathVariable Long id) {
+        return service.getById(id);
     }
 
-    @GetMapping("/lister")
-    public List<Paiement> listerTous() {
-        return service.listerTous();
+    @Operation(description = "Cette méthode permet de lister tous les paiements")
+    @GetMapping("/getAll")
+    public List<Paiement> getAll() {
+        return service.getAll();
     }
 
-    @PutMapping("/mettreAJour")
-    public Paiement mettreAJour(@RequestBody Paiement payment) {
-        return service.mettreAJour(payment);
+    @Operation(description = "Cette méthode permet de mettre à jour un paiement")
+    @PutMapping("/update")
+    public Paiement update(@RequestBody Paiement paiement) {
+        return service.update(paiement);
     }
 
-    @DeleteMapping("/supprimer/{id}")
-    public void supprimer(@PathVariable Long id) {
-        service.supprimer(id);
+    @Operation(description = "Cette méthode permet de supprimer un paiement par son identifiant")
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable Long id) {
+        service.delete(id);
     }
 }

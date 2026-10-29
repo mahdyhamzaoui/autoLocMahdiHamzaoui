@@ -13,27 +13,27 @@ public class VehiculeServiceIMPL implements IVehiculeService {
     VehiculeRepository repository;
 
     @Override
-    public Vehicule creer(Vehicule vehicule) {
+    public Vehicule create(Vehicule vehicule) {
         return repository.save(vehicule);
     }
 
     @Override
-    public Vehicule obtenirParId(Long id) {
+    public Vehicule getById(Long id) {
         return repository.findById(id).orElse(null);
     }
 
     @Override
-    public List<Vehicule> listerTous() {
+    public List<Vehicule> getAll() {
         return repository.findAll();
     }
 
     @Override
-    public Vehicule mettreAJour(Vehicule vehicule) {
+    public Vehicule update(Vehicule vehicule) {
         return repository.save(vehicule);
     }
 
     @Override
-    public void supprimer(Long id) {
+    public void delete(Long id) {
         repository.deleteById(id);
     }
 }

@@ -5,13 +5,13 @@ import tn.esprit.spring.entity.Contrat;
 import java.util.List;
 
 public interface IContratService {
-    Contrat creer(Contrat contrat);
+    Contrat create(Contrat contrat);
 
-    Contrat obtenirParId(Long id);
+    Contrat getById(Long id);
 
-    List<Contrat> listerTous();
+    List<Contrat> getAll();
 
-    Contrat mettreAJour(Contrat contrat);
+    Contrat update(Contrat contrat);
 
-    void supprimer(Long id);
+    void delete(Long id);
 }

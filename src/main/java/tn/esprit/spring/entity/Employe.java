@@ -1,5 +1,6 @@
 package tn.esprit.spring.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,5 +21,6 @@ public class Employe {
     private RoleEmploye role;
 
     @ManyToOne
+    @JsonIgnore
     Agence agence;
 }

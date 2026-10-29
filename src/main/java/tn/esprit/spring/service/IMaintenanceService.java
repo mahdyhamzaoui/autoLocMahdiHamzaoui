@@ -5,13 +5,13 @@ import tn.esprit.spring.entity.Maintenance;
 import java.util.List;
 
 public interface IMaintenanceService {
-    Maintenance creer(Maintenance maintenance);
+    Maintenance create(Maintenance maintenance);
 
-    Maintenance obtenirParId(Long id);
+    Maintenance getById(Long id);
 
-    List<Maintenance> listerTous();
+    List<Maintenance> getAll();
 
-    Maintenance mettreAJour(Maintenance maintenance);
+    Maintenance update(Maintenance maintenance);
 
-    void supprimer(Long id);
+    void delete(Long id);
 }

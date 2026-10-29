@@ -5,13 +5,13 @@ import tn.esprit.spring.entity.Agence;
 import java.util.List;
 
 public interface IAgenceService {
-    Agence creer(Agence agence);
+    Agence create(Agence agence);
 
-    Agence obtenirParId(Long id);
+    Agence getById(Long id);
 
-    List<Agence> listerTous();
+    List<Agence> getAll();
 
-    Agence mettreAJour(Agence agence);
+    Agence update(Agence agence);
 
-    void supprimer(Long id);
+    void delete(Long id);
 }

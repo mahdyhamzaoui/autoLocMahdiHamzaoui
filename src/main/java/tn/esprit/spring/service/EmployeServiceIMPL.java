@@ -9,31 +9,31 @@ import java.util.List;
 
 @AllArgsConstructor
 @Service
-public class EmployeServiceIMPL implements IEmployeService{
+public class EmployeServiceIMPL implements IEmployeService {
     EmployeRepository repository;
 
     @Override
-    public Employe creer(Employe employe) {
+    public Employe create(Employe employe) {
         return repository.save(employe);
     }
 
     @Override
-    public Employe obtenirParId(Long id) {
+    public Employe getById(Long id) {
         return repository.findById(id).orElse(null);
     }
 
     @Override
-    public List<Employe> listerTous() {
+    public List<Employe> getAll() {
         return repository.findAll();
     }
 
     @Override
-    public Employe mettreAJour(Employe employe) {
+    public Employe update(Employe employe) {
         return repository.save(employe);
     }
 
     @Override
-    public void supprimer(Long id) {
+    public void delete(Long id) {
         repository.deleteById(id);
     }
 }

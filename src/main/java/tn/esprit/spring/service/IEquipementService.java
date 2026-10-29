@@ -5,13 +5,13 @@ import tn.esprit.spring.entity.Equipement;
 import java.util.List;
 
 public interface IEquipementService {
-    Equipement creer(Equipement equipement);
+    Equipement create(Equipement equipement);
 
-    Equipement obtenirParId(Long id);
+    Equipement getById(Long id);
 
-    List<Equipement> listerTous();
+    List<Equipement> getAll();
 
-    Equipement mettreAJour(Equipement equipement);
+    Equipement update(Equipement equipement);
 
-    void supprimer(Long id);
+    void delete(Long id);
 }

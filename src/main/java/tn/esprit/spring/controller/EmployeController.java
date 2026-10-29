@@ -1,5 +1,7 @@
 package tn.esprit.spring.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.spring.entity.Employe;
@@ -7,6 +9,7 @@ import tn.esprit.spring.service.IEmployeService;
 
 import java.util.List;
 
+@Tag(name = "Gestion des employés")
 @RestController
 @AllArgsConstructor
 @RequestMapping("/employe")
@@ -14,28 +17,33 @@ public class EmployeController {
 
     IEmployeService service;
 
-    @PostMapping("/creer")
-    public Employe creer(@RequestBody Employe employe) {
-        return service.creer(employe);
+    @Operation(description = "Cette méthode permet d'ajouter un employé")
+    @PostMapping("/create")
+    public Employe create(@RequestBody Employe employe) {
+        return service.create(employe);
     }
 
-    @GetMapping("/obtenir/{id}")
-    public Employe obtenirParId(@PathVariable Long id) {
-        return service.obtenirParId(id);
+    @Operation(description = "Cette méthode permet d'obtenir un employé par son identifiant")
+    @GetMapping("/get/{id}")
+    public Employe getById(@PathVariable Long id) {
+        return service.getById(id);
     }
 
-    @GetMapping("/lister")
-    public List<Employe> listerTous() {
-        return service.listerTous();
+    @Operation(description = "Cette méthode permet de lister tous les employés")
+    @GetMapping("/getAll")
+    public List<Employe> getAll() {
+        return service.getAll();
     }
 
-    @PutMapping("/mettreAJour")
-    public Employe mettreAJour(@RequestBody Employe employe) {
-        return service.mettreAJour(employe);
+    @Operation(description = "Cette méthode permet de mettre à jour un employé")
+    @PutMapping("/update")
+    public Employe update(@RequestBody Employe employe) {
+        return service.update(employe);
     }
 
-    @DeleteMapping("/supprimer/{id}")
-    public void supprimer(@PathVariable Long id) {
-        service.supprimer(id);
+    @Operation(description = "Cette méthode permet de supprimer un employé par son identifiant")
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable Long id) {
+        service.delete(id);
     }
 }

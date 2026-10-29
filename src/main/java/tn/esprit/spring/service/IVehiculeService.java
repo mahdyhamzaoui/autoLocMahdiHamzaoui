@@ -5,13 +5,13 @@ import tn.esprit.spring.entity.Vehicule;
 import java.util.List;
 
 public interface IVehiculeService {
-    Vehicule creer(Vehicule vehicule);
+    Vehicule create(Vehicule vehicule);
 
-    Vehicule obtenirParId(Long id);
+    Vehicule getById(Long id);
 
-    List<Vehicule> listerTous();
+    List<Vehicule> getAll();
 
-    Vehicule mettreAJour(Vehicule vehicule);
+    Vehicule update(Vehicule vehicule);
 
-    void supprimer(Long id);
+    void delete(Long id);
 }

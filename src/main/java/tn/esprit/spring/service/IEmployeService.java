@@ -5,13 +5,13 @@ import tn.esprit.spring.entity.Employe;
 import java.util.List;
 
 public interface IEmployeService {
-    Employe creer(Employe employe);
+    Employe create(Employe employe);
 
-    Employe obtenirParId(Long id);
+    Employe getById(Long id);
 
-    List<Employe> listerTous();
+    List<Employe> getAll();
 
-    Employe mettreAJour(Employe employe);
+    Employe update(Employe employe);
 
-    void supprimer(Long id);
+    void delete(Long id);
 }

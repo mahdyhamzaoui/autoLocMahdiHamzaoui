@@ -5,13 +5,13 @@ import tn.esprit.spring.entity.Reservation;
 import java.util.List;
 
 public interface IReservationService {
-    Reservation creer(Reservation reservation);
+    Reservation create(Reservation reservation);
 
-    Reservation obtenirParId(Long id);
+    Reservation getById(Long id);
 
-    List<Reservation> listerTous();
+    List<Reservation> getAll();
 
-    Reservation mettreAJour(Reservation reservation);
+    Reservation update(Reservation reservation);
 
-    void supprimer(Long id);
+    void delete(Long id);
 }

@@ -13,27 +13,27 @@ public class ReservationServiceIMPL implements IReservationService {
     ReservationRepository repository;
 
     @Override
-    public Reservation creer(Reservation reservation) {
+    public Reservation create(Reservation reservation) {
         return repository.save(reservation);
     }
 
     @Override
-    public Reservation obtenirParId(Long id) {
+    public Reservation getById(Long id) {
         return repository.findById(id).orElse(null);
     }
 
     @Override
-    public List<Reservation> listerTous() {
+    public List<Reservation> getAll() {
         return repository.findAll();
     }
 
     @Override
-    public Reservation mettreAJour(Reservation reservation) {
+    public Reservation update(Reservation reservation) {
         return repository.save(reservation);
     }
 
     @Override
-    public void supprimer(Long id) {
+    public void delete(Long id) {
         repository.deleteById(id);
     }
 }

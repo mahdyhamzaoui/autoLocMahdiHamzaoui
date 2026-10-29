@@ -13,27 +13,27 @@ public class ClientServiceIMPL implements IClientService {
     ClientRepository repository;
 
     @Override
-    public Client creer(Client client) {
+    public Client create(Client client) {
         return repository.save(client);
     }
 
     @Override
-    public Client obtenirParId(Long id) {
+    public Client getById(Long id) {
         return repository.findById(id).orElse(null);
     }
 
     @Override
-    public List<Client> listerTous() {
+    public List<Client> getAll() {
         return repository.findAll();
     }
 
     @Override
-    public Client mettreAJour(Client client) {
+    public Client update(Client client) {
         return repository.save(client);
     }
 
     @Override
-    public void supprimer(Long id) {
+    public void delete(Long id) {
         repository.deleteById(id);
     }
 }

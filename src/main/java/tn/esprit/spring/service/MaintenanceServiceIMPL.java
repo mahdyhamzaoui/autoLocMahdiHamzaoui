@@ -13,27 +13,27 @@ public class MaintenanceServiceIMPL implements IMaintenanceService {
     MaintenanceRepository repository;
 
     @Override
-    public Maintenance creer(Maintenance maintenance) {
+    public Maintenance create(Maintenance maintenance) {
         return repository.save(maintenance);
     }
 
     @Override
-    public Maintenance obtenirParId(Long id) {
+    public Maintenance getById(Long id) {
         return repository.findById(id).orElse(null);
     }
 
     @Override
-    public List<Maintenance> listerTous() {
+    public List<Maintenance> getAll() {
         return repository.findAll();
     }
 
     @Override
-    public Maintenance mettreAJour(Maintenance maintenance) {
+    public Maintenance update(Maintenance maintenance) {
         return repository.save(maintenance);
     }
 
     @Override
-    public void supprimer(Long id) {
+    public void delete(Long id) {
         repository.deleteById(id);
     }
 }

@@ -1,5 +1,7 @@
 package tn.esprit.spring.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.spring.entity.Agence;
@@ -7,6 +9,7 @@ import tn.esprit.spring.service.IAgenceService;
 
 import java.util.List;
 
+@Tag(name = "Gestion des agences")
 @RestController
 @AllArgsConstructor
 @RequestMapping("/agence")
@@ -14,28 +17,33 @@ public class AgenceController {
 
     IAgenceService service;
 
-    @PostMapping("/creer")
-    public Agence creer(@RequestBody Agence agence) {
-        return service.creer(agence);
+    @Operation(description = "Cette méthode permet d'ajouter une agence")
+    @PostMapping("/create")
+    public Agence create(@RequestBody Agence agence) {
+        return service.create(agence);
     }
 
-    @GetMapping("/obtenir/{id}")
-    public Agence obtenirParId(@PathVariable Long id) {
-        return service.obtenirParId(id);
+    @Operation(description = "Cette méthode permet d'obtenir une agence par son identifiant")
+    @GetMapping("/get/{id}")
+    public Agence getById(@PathVariable Long id) {
+        return service.getById(id);
     }
 
-    @GetMapping("/lister")
-    public List<Agence> listerTous() {
-        return service.listerTous();
+    @Operation(description = "Cette méthode permet de lister toutes les agences")
+    @GetMapping("/getAll")
+    public List<Agence> getAll() {
+        return service.getAll();
     }
 
-    @PutMapping("/mettreAJour")
-    public Agence mettreAJour(@RequestBody Agence agence) {
-        return service.mettreAJour(agence);
+    @Operation(description = "Cette méthode permet de mettre à jour une agence")
+    @PutMapping("/update")
+    public Agence update(@RequestBody Agence agence) {
+        return service.update(agence);
     }
 
-    @DeleteMapping("/supprimer/{id}")
-    public void supprimer(@PathVariable Long id) {
-        service.supprimer(id);
+    @Operation(description = "Cette méthode permet de supprimer une agence par son identifiant")
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable Long id) {
+        service.delete(id);
     }
 }

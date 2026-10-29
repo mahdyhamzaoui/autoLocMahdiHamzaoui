@@ -5,13 +5,13 @@ import tn.esprit.spring.entity.Paiement;
 import java.util.List;
 
 public interface IPaiementService {
-    Paiement creer(Paiement payment);
+    Paiement create(Paiement paiement);
 
-    Paiement obtenirParId(Long id);
+    Paiement getById(Long id);
 
-    List<Paiement> listerTous();
+    List<Paiement> getAll();
 
-    Paiement mettreAJour(Paiement payment);
+    Paiement update(Paiement paiement);
 
-    void supprimer(Long id);
+    void delete(Long id);
 }

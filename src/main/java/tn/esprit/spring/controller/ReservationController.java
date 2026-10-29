@@ -1,5 +1,7 @@
 package tn.esprit.spring.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.spring.entity.Reservation;
@@ -7,6 +9,7 @@ import tn.esprit.spring.service.IReservationService;
 
 import java.util.List;
 
+@Tag(name = "Gestion des réservations")
 @RestController
 @AllArgsConstructor
 @RequestMapping("/reservation")
@@ -14,28 +17,33 @@ public class ReservationController {
 
     IReservationService service;
 
-    @PostMapping("/creer")
-    public Reservation creer(@RequestBody Reservation reservation) {
-        return service.creer(reservation);
+    @Operation(description = "Cette méthode permet d'ajouter une réservation")
+    @PostMapping("/create")
+    public Reservation create(@RequestBody Reservation reservation) {
+        return service.create(reservation);
     }
 
-    @GetMapping("/obtenir/{id}")
-    public Reservation obtenirParId(@PathVariable Long id) {
-        return service.obtenirParId(id);
+    @Operation(description = "Cette méthode permet d'obtenir une réservation par son identifiant")
+    @GetMapping("/get/{id}")
+    public Reservation getById(@PathVariable Long id) {
+        return service.getById(id);
     }
 
-    @GetMapping("/lister")
-    public List<Reservation> listerTous() {
-        return service.listerTous();
+    @Operation(description = "Cette méthode permet de lister toutes les réservations")
+    @GetMapping("/getAll")
+    public List<Reservation> getAll() {
+        return service.getAll();
     }
 
-    @PutMapping("/mettreAJour")
-    public Reservation mettreAJour(@RequestBody Reservation reservation) {
-        return service.mettreAJour(reservation);
+    @Operation(description = "Cette méthode permet de mettre à jour une réservation")
+    @PutMapping("/update")
+    public Reservation update(@RequestBody Reservation reservation) {
+        return service.update(reservation);
     }
 
-    @DeleteMapping("/supprimer/{id}")
-    public void supprimer(@PathVariable Long id) {
-        service.supprimer(id);
+    @Operation(description = "Cette méthode permet de supprimer une réservation par son identifiant")
+    @DeleteMapping("/delete/{id}")
+    public void delete(@PathVariable Long id) {
+        service.delete(id);
     }
 }

@@ -13,27 +13,27 @@ public class AgenceServiceIMPL implements IAgenceService {
     AgenceRepository repository;
 
     @Override
-    public Agence creer(Agence agence) {
+    public Agence create(Agence agence) {
         return repository.save(agence);
     }
 
     @Override
-    public Agence obtenirParId(Long id) {
+    public Agence getById(Long id) {
         return repository.findById(id).orElse(null);
     }
 
     @Override
-    public List<Agence> listerTous() {
+    public List<Agence> getAll() {
         return repository.findAll();
     }
 
     @Override
-    public Agence mettreAJour(Agence agence) {
+    public Agence update(Agence agence) {
         return repository.save(agence);
     }
 
     @Override
-    public void supprimer(Long id) {
+    public void delete(Long id) {
         repository.deleteById(id);
     }
 }

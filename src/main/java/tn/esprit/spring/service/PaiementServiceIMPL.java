@@ -13,27 +13,27 @@ public class PaiementServiceIMPL implements IPaiementService {
     PaiementRepository repository;
 
     @Override
-    public Paiement creer(Paiement payment) {
-        return repository.save(payment);
+    public Paiement create(Paiement paiement) {
+        return repository.save(paiement);
     }
 
     @Override
-    public Paiement obtenirParId(Long id) {
+    public Paiement getById(Long id) {
         return repository.findById(id).orElse(null);
     }
 
     @Override
-    public List<Paiement> listerTous() {
+    public List<Paiement> getAll() {
         return repository.findAll();
     }
 
     @Override
-    public Paiement mettreAJour(Paiement payment) {
-        return repository.save(payment);
+    public Paiement update(Paiement paiement) {
+        return repository.save(paiement);
     }
 
     @Override
-    public void supprimer(Long id) {
+    public void delete(Long id) {
         repository.deleteById(id);
     }
 }
